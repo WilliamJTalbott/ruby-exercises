@@ -1,4 +1,21 @@
 def pascal(row_number)
+
+  return nil if row_number < 0
+
+  if row_number <= 1
+    return [1]
+  else
+    previous_row = pascal(row_number - 1)
+    padded = [0] + previous_row + [0]
+
+    next_row = padded.each_cons(2).map do |left, right|
+      left + right
+    end
+
+    next_row
+  end
+
+
   # Pascal's triangle is modeled as follows:
   # - The first row is `1`.
   # - Each row can be considered to have a hidden `0` to either sides of it. So the first row could also be said to be `0, 1, 0`
